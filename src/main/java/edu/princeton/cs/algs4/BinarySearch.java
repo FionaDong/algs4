@@ -25,7 +25,12 @@
 
 package edu.princeton.cs.algs4;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *  The {@code BinarySearch} class provides a static method for binary
@@ -88,15 +93,16 @@ public class BinarySearch {
      *
      * @param args the command-line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException {
 
         // read the integers from a file
-        In in = new In(args[0]);
+        In in = new In("/Users/thinkdeeply/Documents/OpenSource/algs4/algs4-data/tinyW.txt");
         int[] whitelist = in.readAllInts();
 
         // sort the array
         Arrays.sort(whitelist);
-
+        InputStream in1 = new FileInputStream(new File("/Users/thinkdeeply/Documents/OpenSource/algs4/algs4-data/tinyT.txt"));
+        StdIn.setScanner(new Scanner(new java.io.BufferedInputStream(in1), "UTF-8"));
         // read integer key from standard input; print if not in whitelist
         while (!StdIn.isEmpty()) {
             int key = StdIn.readInt();
